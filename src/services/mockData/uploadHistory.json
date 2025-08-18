@@ -1,0 +1,47 @@
+[
+  {
+    "Id": 1,
+    "name": "presentation-deck.pdf",
+    "size": 2456789,
+    "type": "application/pdf",
+    "status": "completed",
+    "shareLink": "https://dropzone.app/share/abc123def",
+    "uploadedAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "vacation-photos.zip",
+    "size": 15678902,
+    "type": "application/zip",
+    "status": "completed",
+    "shareLink": "https://dropzone.app/share/xyz789ghi",
+    "uploadedAt": "2024-01-14T16:45:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "demo-video.mp4",
+    "size": 45123456,
+    "type": "video/mp4",
+    "status": "completed",
+    "shareLink": "https://dropzone.app/share/lmn456opq",
+    "uploadedAt": "2024-01-13T09:15:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "spreadsheet-data.xlsx",
+    "size": 987654,
+    "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "status": "completed",
+    "shareLink": "https://dropzone.app/share/rst789uvw",
+    "uploadedAt": "2024-01-12T14:20:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "design-mockups.sketch",
+    "size": 8765432,
+    "type": "application/octet-stream",
+    "status": "completed",
+    "shareLink": "https://dropzone.app/share/efg123hij",
+    "uploadedAt": "2024-01-11T11:10:00Z"
+  }
+]
