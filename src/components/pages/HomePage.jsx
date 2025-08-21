@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import { uploadService } from "@/services/api/uploadService";
@@ -118,7 +119,7 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="flex items-center space-x-4">
+<div className="flex items-center space-x-4">
               <div className="hidden sm:flex items-center space-x-6 text-sm text-gray-500">
                 <div className="flex items-center space-x-2">
                   <ApperIcon name="Zap" size={16} className="text-primary-500" />
@@ -129,6 +130,15 @@ const HomePage = () => {
                   <span>Secure Upload</span>
                 </div>
               </div>
+              
+              <Link 
+                to="/tasks" 
+                className="flex items-center space-x-2 text-sm text-gray-600 hover:text-primary-600 transition-colors"
+              >
+                <ApperIcon name="ListCheck" size={16} className="text-primary-500" />
+                <span>Tasks</span>
+              </Link>
+              
               <LogoutButton />
             </div>
           </div>
