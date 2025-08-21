@@ -1,12 +1,15 @@
-import React, { useState, useCallback } from "react"
-import { motion } from "framer-motion"
-import { toast } from "react-toastify"
-import ApperIcon from "@/components/ApperIcon"
-import DropZone from "@/components/organisms/DropZone"
-import ActiveUploads from "@/components/organisms/ActiveUploads"
-import UploadHistory from "@/components/organisms/UploadHistory"
-import { uploadService } from "@/services/api/uploadService"
-import { generateFileId } from "@/utils/fileUtils"
+import React, { useCallback, useContext, useState } from "react";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import { uploadService } from "@/services/api/uploadService";
+import { useSelector } from "react-redux";
+import { AuthContext } from "../../App";
+import ApperIcon from "@/components/ApperIcon";
+import DropZone from "@/components/organisms/DropZone";
+import ActiveUploads from "@/components/organisms/ActiveUploads";
+import UploadHistory from "@/components/organisms/UploadHistory";
+import Button from "@/components/atoms/Button";
+import { generateFileId } from "@/utils/fileUtils";
 
 const HomePage = () => {
   const [activeUploads, setActiveUploads] = useState([])
@@ -72,7 +75,7 @@ const HomePage = () => {
   const hasActiveUploads = activeUploads.length > 0
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+<div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -89,15 +92,18 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="hidden sm:flex items-center space-x-6 text-sm text-gray-500">
-              <div className="flex items-center space-x-2">
-                <ApperIcon name="Zap" size={16} className="text-primary-500" />
-                <span>Instant Links</span>
+            <div className="flex items-center space-x-4">
+              <div className="hidden sm:flex items-center space-x-6 text-sm text-gray-500">
+                <div className="flex items-center space-x-2">
+                  <ApperIcon name="Zap" size={16} className="text-primary-500" />
+                  <span>Instant Links</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <ApperIcon name="Shield" size={16} className="text-accent-500" />
+                  <span>Secure Upload</span>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <ApperIcon name="Shield" size={16} className="text-accent-500" />
-                <span>Secure Upload</span>
-              </div>
+              <LogoutButton />
             </div>
           </div>
         </div>
@@ -133,7 +139,31 @@ const HomePage = () => {
         </div>
       </footer>
     </div>
-  )
+)
 }
 
-export default HomePage
+const LogoutButton = () => {
+  const { logout } = useContext(AuthContext)
+  const user = useSelector((state) => state.user.user)
+  
+  const handleLogout = async () => {
+    try {
+      await logout()
+    } catch (error) {
+      console.error("Logout failed:", error)
+    }
+  }
+  
+  return (
+    <Button
+      onClick={handleLogout}
+      variant="outline"
+      size="sm"
+      className="flex items-center space-x-2"
+      title={user?.firstName ? `Logout ${user.firstName}` : 'Logout'}
+    >
+      <ApperIcon name="LogOut" size={16} />
+      <span className="hidden sm:inline">Logout</span>
+    </Button>
+  )
+}

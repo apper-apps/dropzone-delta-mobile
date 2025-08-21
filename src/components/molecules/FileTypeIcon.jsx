@@ -3,7 +3,7 @@ import ApperIcon from "@/components/ApperIcon"
 import { getFileType } from "@/utils/fileUtils"
 
 const FileTypeIcon = ({ fileName, className = "w-10 h-10" }) => {
-  const fileType = getFileType(fileName)
+const fileType = getFileType(fileName)
   
   const typeIcons = {
     image: { icon: "Image", bg: "bg-gradient-to-br from-pink-100 to-pink-50", color: "text-pink-600" },

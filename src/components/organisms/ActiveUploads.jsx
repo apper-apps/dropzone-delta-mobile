@@ -28,12 +28,12 @@ const ActiveUploads = ({ uploads = [] }) => {
               className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition-all duration-200"
             >
               <div className="flex items-center space-x-4">
-                <FileTypeIcon fileName={upload.name} className="w-12 h-12 flex-shrink-0" />
+<FileTypeIcon fileName={upload.name} className="w-12 h-12 flex-shrink-0" />
                 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-sm font-medium text-gray-900 truncate pr-2">
-                      {upload.name}
+{upload.name}
                     </h3>
                     <div className="flex items-center space-x-2 text-xs text-gray-500 flex-shrink-0">
                       <span>{Math.round(upload.progress)}%</span>
@@ -56,7 +56,7 @@ const ActiveUploads = ({ uploads = [] }) => {
                   
                   <div className="flex items-center justify-between text-xs text-gray-500">
                     <span>
-                      {formatFileSize(upload.uploadedSize || 0)} of {formatFileSize(upload.totalSize)}
+{formatFileSize(upload.uploadedSize || 0)} of {formatFileSize(upload.totalSize)}
                     </span>
                     
                     {upload.status === "uploading" && (

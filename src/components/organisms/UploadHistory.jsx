@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { format } from "date-fns"
-import { toast } from "react-toastify"
-import ApperIcon from "@/components/ApperIcon"
-import Button from "@/components/atoms/Button"
-import FileTypeIcon from "@/components/molecules/FileTypeIcon"
-import CopyButton from "@/components/molecules/CopyButton"
-import Loading from "@/components/ui/Loading"
-import Error from "@/components/ui/Error"
-import Empty from "@/components/ui/Empty"
-import { formatFileSize } from "@/utils/fileUtils"
-import { uploadService } from "@/services/api/uploadService"
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { format } from "date-fns";
+import { toast } from "react-toastify";
+import { uploadService } from "@/services/api/uploadService";
+import ApperIcon from "@/components/ApperIcon";
+import Error from "@/components/ui/Error";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import FileTypeIcon from "@/components/molecules/FileTypeIcon";
+import CopyButton from "@/components/molecules/CopyButton";
+import Button from "@/components/atoms/Button";
+import { formatFileSize } from "@/utils/fileUtils";
 
 const UploadHistory = ({ refreshTrigger }) => {
   const [history, setHistory] = useState([])
@@ -34,10 +34,10 @@ const UploadHistory = ({ refreshTrigger }) => {
     loadHistory()
   }, [refreshTrigger])
   
-  const handleDelete = async (id) => {
+const handleDelete = async (id) => {
     try {
       await uploadService.deleteUpload(id)
-      setHistory(prev => prev.filter(item => item.Id !== id))
+      setHistory(prev => prev.filter(item => item.id !== id))
       toast.success("Upload removed from history")
     } catch (err) {
       toast.error("Failed to remove upload")
@@ -102,10 +102,10 @@ const UploadHistory = ({ refreshTrigger }) => {
           />
         ) : (
           <div className="space-y-3">
-            <AnimatePresence mode="popLayout">
+<AnimatePresence mode="popLayout">
               {history.map((upload, index) => (
                 <motion.div
-                  key={upload.Id}
+                  key={upload.id || index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -113,18 +113,18 @@ const UploadHistory = ({ refreshTrigger }) => {
                   className="flex items-center justify-between p-4 rounded-lg border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all duration-200 group"
                 >
                   <div className="flex items-center space-x-4 flex-1 min-w-0">
-                    <FileTypeIcon fileName={upload.name} />
+                    <FileTypeIcon fileName={upload.Name} />
                     
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-medium text-gray-900 truncate group-hover:text-primary-600 transition-colors duration-200">
-                        {upload.name}
+                        {upload.Name}
                       </h3>
                       <div className="flex items-center space-x-4 mt-1">
                         <span className="text-xs text-gray-500">
-                          {formatFileSize(upload.size)}
+                          {formatFileSize(upload.size_c)}
                         </span>
                         <span className="text-xs text-gray-400">
-                          {format(new Date(upload.uploadedAt), "MMM d, yyyy 'at' h:mm a")}
+                          {format(new Date(upload.uploaded_at_c), "MMM d, yyyy 'at' h:mm a")}
                         </span>
                       </div>
                     </div>
@@ -132,13 +132,13 @@ const UploadHistory = ({ refreshTrigger }) => {
                   
                   <div className="flex items-center space-x-2">
                     <CopyButton 
-                      text={upload.shareLink}
+                      text={upload.share_link_c}
                       label="Copy share link"
                       className="opacity-70 group-hover:opacity-100 transition-opacity duration-200"
                     />
                     
                     <Button
-                      onClick={() => handleDelete(upload.Id)}
+                      onClick={() => handleDelete(upload.id)}
                       variant="ghost"
                       size="icon"
                       className="opacity-70 group-hover:opacity-100 transition-opacity duration-200 text-gray-400 hover:text-red-500"
