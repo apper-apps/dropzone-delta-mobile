@@ -10,7 +10,9 @@ import Callback from "@/components/pages/Callback"
 import ErrorPage from "@/components/pages/ErrorPage"
 import ResetPassword from "@/components/pages/ResetPassword"
 import PromptPassword from "@/components/pages/PromptPassword"
-
+import TaskList from "@/components/pages/TaskList"
+import TaskDetail from "@/components/pages/TaskDetail"
+import TaskForm from "@/components/pages/TaskForm"
 // Create auth context
 export const AuthContext = createContext(null)
 
@@ -118,7 +120,7 @@ function AppContent() {
   return (
     <AuthContext.Provider value={authMethods}>
 <div className="min-h-screen bg-gray-50">
-        <Routes>
+<Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/callback" element={<Callback />} />
@@ -126,6 +128,10 @@ function AppContent() {
           <Route path="/prompt-password/:appId/:emailAddress/:provider" element={<PromptPassword />} />
           <Route path="/reset-password/:appId/:fields" element={<ResetPassword />} />
           <Route path="/" element={<HomePage />} />
+          <Route path="/tasks" element={<TaskList />} />
+          <Route path="/tasks/new" element={<TaskForm />} />
+          <Route path="/tasks/:id" element={<TaskDetail />} />
+          <Route path="/tasks/:id/edit" element={<TaskForm />} />
         </Routes>
         
         <ToastContainer

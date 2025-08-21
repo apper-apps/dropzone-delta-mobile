@@ -103,7 +103,7 @@ const handleDelete = async (id) => {
         ) : (
           <div className="space-y-3">
 <AnimatePresence mode="popLayout">
-              {history.map((upload, index) => (
+{history.map((upload, index) => (
                 <motion.div
                   key={upload.id || index}
                   initial={{ opacity: 0, y: 20 }}
@@ -131,6 +131,16 @@ const handleDelete = async (id) => {
                   </div>
                   
                   <div className="flex items-center space-x-2">
+                    <Button
+                      onClick={() => window.open(`/tasks/new?file=${upload.Id}`, '_blank')}
+                      variant="ghost"
+                      size="icon"
+                      className="opacity-70 group-hover:opacity-100 transition-opacity duration-200 text-gray-500 hover:text-primary-600"
+                      title="Create task for this file"
+                    >
+                      <ApperIcon name="Plus" size={16} />
+                    </Button>
+                    
                     <CopyButton 
                       text={upload.share_link_c}
                       label="Copy share link"

@@ -11,6 +11,32 @@ import UploadHistory from "@/components/organisms/UploadHistory";
 import Button from "@/components/atoms/Button";
 import { generateFileId } from "@/utils/fileUtils";
 
+const LogoutButton = () => {
+  const { logout } = useContext(AuthContext)
+  const user = useSelector((state) => state.user.user)
+  
+  const handleLogout = async () => {
+    try {
+      await logout()
+    } catch (error) {
+      console.error("Logout failed:", error)
+    }
+  }
+  
+  return (
+    <Button
+      onClick={handleLogout}
+      variant="outline"
+      size="sm"
+      className="flex items-center space-x-2"
+      title={user?.firstName ? `Logout ${user.firstName}` : 'Logout'}
+    >
+      <ApperIcon name="LogOut" size={16} />
+      <span className="hidden sm:inline">Logout</span>
+    </Button>
+  )
+}
+
 const HomePage = () => {
   const [activeUploads, setActiveUploads] = useState([])
   const [historyRefresh, setHistoryRefresh] = useState(0)
@@ -75,7 +101,7 @@ const HomePage = () => {
   const hasActiveUploads = activeUploads.length > 0
   
   return (
-<div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -139,32 +165,7 @@ const HomePage = () => {
         </div>
       </footer>
     </div>
-)
+  )
 }
 
 export default HomePage
-const LogoutButton = () => {
-  const { logout } = useContext(AuthContext)
-  const user = useSelector((state) => state.user.user)
-  
-  const handleLogout = async () => {
-    try {
-      await logout()
-    } catch (error) {
-      console.error("Logout failed:", error)
-    }
-  }
-  
-  return (
-    <Button
-      onClick={handleLogout}
-      variant="outline"
-      size="sm"
-      className="flex items-center space-x-2"
-      title={user?.firstName ? `Logout ${user.firstName}` : 'Logout'}
-    >
-      <ApperIcon name="LogOut" size={16} />
-      <span className="hidden sm:inline">Logout</span>
-    </Button>
-  )
-}
