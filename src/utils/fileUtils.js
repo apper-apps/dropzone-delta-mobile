@@ -19,6 +19,11 @@ export const formatUploadSpeed = (bytesPerSecond) => {
 }
 
 export const getFileType = (fileName) => {
+  // Handle null, undefined, or non-string inputs
+  if (!fileName || typeof fileName !== 'string') {
+    return "file"
+  }
+  
   const extension = fileName.split(".").pop()?.toLowerCase()
   
   const imageTypes = ["jpg", "jpeg", "png", "gif", "webp", "svg", "bmp"]
