@@ -73,11 +73,11 @@ const DropZone = ({ onFilesSelected, disabled = false }) => {
   
   return (
     <motion.div
-      className={`
+className={`
         relative border-2 border-dashed rounded-xl p-12 text-center transition-all duration-300
         ${isDragOver 
-          ? "border-primary-500 bg-gradient-to-br from-primary-50 to-purple-50 shadow-lg scale-[1.02]" 
-          : "border-gray-300 bg-gradient-to-br from-gray-50 to-white hover:border-primary-400 hover:bg-gradient-to-br hover:from-primary-25 hover:to-purple-25"
+          ? "border-primary-500 bg-gradient-to-br from-primary-100 to-primary-50 shadow-xl shadow-primary-500/20 scale-[1.02]" 
+          : "border-gray-300 bg-gradient-to-br from-gray-50 to-white hover:border-primary-400 hover:bg-gradient-to-br hover:from-primary-50 hover:to-primary-25"
         }
         ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
       `}
@@ -103,18 +103,18 @@ const DropZone = ({ onFilesSelected, disabled = false }) => {
           rotate: isDragOver ? 5 : 0
         }}
         transition={{ duration: 0.2 }}
-        className={`
-          w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center
+className={`
+          w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-300
           ${isDragOver 
-            ? "bg-gradient-to-br from-primary-600 to-primary-700 shadow-lg" 
-            : "bg-gradient-to-br from-primary-100 to-primary-50 border border-primary-200"
+            ? "bg-gradient-to-br from-primary-700 to-primary-800 shadow-2xl shadow-primary-700/40" 
+            : "bg-gradient-to-br from-primary-100 to-primary-200 border border-primary-300 shadow-lg shadow-primary-100/50"
           }
         `}
       >
         <ApperIcon 
           name={isDragOver ? "Download" : "Upload"} 
           size={28} 
-          className={isDragOver ? "text-white" : "text-primary-600"} 
+          className={isDragOver ? "text-white" : "text-primary-700"} 
         />
       </motion.div>
       
@@ -126,13 +126,13 @@ const DropZone = ({ onFilesSelected, disabled = false }) => {
         or click to browse your files
       </p>
       
-      <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-gray-500">
+<div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-gray-500">
         <div className="flex items-center space-x-2">
-          <ApperIcon name="Shield" size={16} className="text-accent-500" />
+          <ApperIcon name="Shield" size={16} className="text-primary-500" />
           <span>Up to 100MB per file</span>
         </div>
         <div className="flex items-center space-x-2">
-          <ApperIcon name="Zap" size={16} className="text-primary-500" />
+          <ApperIcon name="Zap" size={16} className="text-primary-600" />
           <span>Instant shareable links</span>
         </div>
       </div>

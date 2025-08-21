@@ -65,7 +65,7 @@ const ActiveUploads = ({ uploads = [] }) => {
                           animate={{ rotate: 360 }}
                           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                         >
-                          <ApperIcon name="Loader2" size={12} className="text-primary-600" />
+<ApperIcon name="Loader2" size={12} className="text-primary-700" />
                         </motion.div>
                         <span className="text-primary-600">Uploading...</span>
                       </div>
@@ -76,11 +76,11 @@ const ActiveUploads = ({ uploads = [] }) => {
                         <motion.div
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
-                          className="w-3 h-3 rounded-full bg-accent-500 flex items-center justify-center"
+className="w-3 h-3 rounded-full bg-primary-600 flex items-center justify-center shadow-sm"
                         >
                           <ApperIcon name="Check" size={8} className="text-white" />
                         </motion.div>
-                        <span className="text-accent-600 font-medium">Complete</span>
+                        <span className="text-primary-700 font-medium">Complete</span>
                       </div>
                     )}
                   </div>

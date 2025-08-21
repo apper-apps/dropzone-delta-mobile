@@ -4,10 +4,10 @@ import { cn } from "@/utils/cn"
 const Badge = forwardRef(({ className, variant = "default", size = "default", children, ...props }, ref) => {
   const baseClasses = "inline-flex items-center rounded-full font-medium"
   
-  const variants = {
+const variants = {
     default: "bg-gray-100 text-gray-800",
-    primary: "bg-gradient-to-r from-primary-100 to-primary-50 text-primary-800 border border-primary-200",
-    success: "bg-gradient-to-r from-accent-100 to-accent-50 text-accent-800 border border-accent-200",
+    primary: "bg-gradient-to-r from-primary-100 to-primary-50 text-primary-800 border border-primary-200 shadow-sm",
+    success: "bg-gradient-to-r from-primary-200 to-primary-100 text-primary-800 border border-primary-300 shadow-sm",
     warning: "bg-gradient-to-r from-amber-100 to-amber-50 text-amber-800 border border-amber-200",
     error: "bg-gradient-to-r from-red-100 to-red-50 text-red-800 border border-red-200",
     info: "bg-gradient-to-r from-blue-100 to-blue-50 text-blue-800 border border-blue-200"

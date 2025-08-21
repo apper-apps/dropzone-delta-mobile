@@ -15,7 +15,7 @@ const Empty = ({
       animate={{ opacity: 1, y: 0 }}
       className={`text-center py-12 ${className}`}
     >
-      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+<div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-sm">
         <ApperIcon name="Upload" size={24} className="text-purple-600" />
       </div>
       

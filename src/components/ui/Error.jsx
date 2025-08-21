@@ -10,7 +10,7 @@ const Error = ({ message = "Something went wrong", onRetry, className = "" }) =>
       animate={{ opacity: 1, scale: 1 }}
       className={`text-center py-12 ${className}`}
     >
-      <div className="bg-red-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+<div className="bg-gradient-to-br from-red-50 to-red-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-sm">
         <ApperIcon name="AlertCircle" size={24} className="text-red-500" />
       </div>
       

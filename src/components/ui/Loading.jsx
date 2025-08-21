@@ -4,12 +4,12 @@ import { motion } from "framer-motion"
 const Loading = ({ className = "" }) => {
   return (
     <div className={`animate-pulse ${className}`}>
-      {/* Drop Zone Skeleton */}
-      <div className="bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-dashed border-gray-300 rounded-xl p-12 mb-8">
+{/* Drop Zone Skeleton */}
+      <div className="bg-gradient-to-br from-primary-25 to-gray-100 border-2 border-dashed border-primary-200 rounded-xl p-12 mb-8">
         <div className="text-center">
-          <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-4"></div>
-          <div className="h-6 bg-gray-200 rounded w-48 mx-auto mb-2"></div>
-          <div className="h-4 bg-gray-200 rounded w-32 mx-auto"></div>
+          <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full mx-auto mb-4"></div>
+          <div className="h-6 bg-primary-100 rounded w-48 mx-auto mb-2"></div>
+          <div className="h-4 bg-primary-50 rounded w-32 mx-auto"></div>
         </div>
       </div>
 
