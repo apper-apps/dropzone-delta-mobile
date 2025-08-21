@@ -142,6 +142,7 @@ const HomePage = () => {
 )
 }
 
+export default HomePage
 const LogoutButton = () => {
   const { logout } = useContext(AuthContext)
   const user = useSelector((state) => state.user.user)
